@@ -1,7 +1,4 @@
-# tfmdcli
-<<<<<<< HEAD
-A NodeJS CLI to convert Terraform code into Markdown formatted tables
-=======
+## tfmdcli
 
 Terraform Markdown CLI is a tool to convert your terraform variables or outputs into a markdown table, or to create markdown formatted example `module` blocks.
 
