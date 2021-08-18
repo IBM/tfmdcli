@@ -54,7 +54,7 @@ module example {
 
 This is an example table from [an example variable file](./example.tf) using `tfmdcli example.tf -t -i`
 
-```
+```terraform
 api_key=""
 security_group_rules=""
 disable_public_service_endpoint=true
@@ -65,4 +65,3 @@ spoke_vpc_cidr_blocks={
 }
 tags=[]
 ```
->>>>>>> 278029ff5f607e47a1ece9c74d7022a17187a62e
