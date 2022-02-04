@@ -817,6 +817,12 @@ module test {
         "it should return properly formatted data"
       );
     });
+    it("should remove the optional argument when printing a variable marked with optional()", () => {
+      let data = `test = optional(string)`
+      let expectedData = `test=""`
+      let actualData = formatObjectTfvar(data)
+      assert.deepEqual(expectedData, actualData, "it should return correctly formatted data")
+    })
   });
   describe("getSpaces", () => {
     let getSpaces = utils.getSpaces;
