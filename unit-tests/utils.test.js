@@ -129,6 +129,17 @@ describe("utils", () => {
       let actualData = utils.pullSubStrData(testFields, testData);
       assert.deepEqual(actualData, expectedData, "JSON objects should match");
     });
+    it("should remove quotes from variable names", () => {
+      let testData = ` "ibm_region" { description = "IBM Cloud region where all resources will be deployed" type = string default = "eu-de" validation { error_message = "Must use an IBM Cloud region. Use \`ibmcloud regions\` with the IBM Cloud CLI to see valid regions." condition = can( contains([ "au-syd", "jp-tok", "eu-de", "eu-gb", "us-south", "us-east" ], var.ibm_region) ) } }`;
+      let expectedData = {
+        name: 'ibm_region',
+        description: `IBM Cloud region where all resources will be deployed`,
+        type: "string",
+        default: "eu-de",
+      };
+      let actualData = utils.pullSubStrData(testFields, testData);
+      assert.deepEqual(actualData, expectedData, "JSON objects should match");
+    })
     it("should return the correct data when given an object if the validation field is in the middle", () => {
       let testData = ` ibm_region { description = "IBM Cloud region where all resources will be deployed" validation { error_message = "Must use an IBM Cloud region. Use \`ibmcloud regions\` with the IBM Cloud CLI to see valid regions." condition = can( contains([ "au-syd", "jp-tok", "eu-de", "eu-gb", "us-south", "us-east" ], var.ibm_region) ) } type = string default = "eu-de" }`;
       let expectedData = {
@@ -821,7 +832,7 @@ module test {
       let data = `test = optional(string)`
       let expectedData = `test=""`
       let actualData = formatObjectTfvar(data)
-      assert.deepEqual(expectedData, actualData, "it should return correctly formatted data")
+      assert.deepEqual(expectedData, actualData, "it should return correctly formatted")
     })
   });
   describe("getSpaces", () => {
