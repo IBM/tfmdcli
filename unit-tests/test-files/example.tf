@@ -8,7 +8,7 @@ variable api_key {
   sensitive   = true
 }
 
-variable security_group_rules {
+variable "security_group_rules" {
   description = "Map of security group rules to be added to default security group"
   default     = {
     allow_all_inbound = {
