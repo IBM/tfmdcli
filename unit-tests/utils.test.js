@@ -1000,6 +1000,42 @@ module test {
         "it should return the correct data"
       );
     });
+    it("should return the correct entry for lists and objects with optional params", () => {
+      let entry = {
+        name: "test",
+        type: `object({ name = string rules = list( object({ name = string direction = string source = string tcp = optional( object({ port_max = number port_min = number }) ) udp = optional( object({ port_max = number port_min = number }) ) icmp = optional( object({ type = number code = number }) ) }) ) })`
+      }
+      let actualData = makeExampleTfvar(entry)
+      console.log(actualData)
+      let expectedData = `test={
+    name=""
+    rules = [
+        {
+            name=""
+            direction=""
+            source=""
+            tcp = {
+                port_max=0
+                port_min=0
+            }
+            udp = {
+                port_max=0
+                port_min=0
+            }
+            icmp = {
+                type=0
+                code=0
+            }
+        ]
+    }
+}`
+      console.log(actualData)
+      assert.deepEqual(
+        expectedData,
+        actualData,
+        "it should return the correct data"
+      );
+    })
   });
   describe("parseAndPrintTfvars", () => {
     let parseAndPrintTfvars = utils.parseAndPrintTfvars;
