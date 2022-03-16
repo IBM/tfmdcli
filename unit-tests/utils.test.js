@@ -1043,14 +1043,23 @@ module test {
         "utf8"
       );
       let expectedData = `create_load_balancer=true
+
 name=null
+
 subnet_ids=[]
+
 type="public"
+
 security_group_ids=null
+
 logging=null
+
 resource_group_id=null
+
 tags=null
+
 lb_pools=[]
+
 lb_listeners=[]`;
       let actualData = parseAndPrintTfvars(input);
       assert.deepEqual(
