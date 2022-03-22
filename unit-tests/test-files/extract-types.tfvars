@@ -1,16 +1,24 @@
 create_load_balancer=true
+
 name=""
+
 subnet_ids=[]
+
 type=""
+
 security_group_ids=[]
+
 logging=true
+
 resource_group_id=""
+
 tags={
     test=[""]
     test2 = {
         test=0
     }
 }
+
 lb_pools=[
     {
         name=""
@@ -34,6 +42,7 @@ lb_pools=[
         ]
     }
 ]
+
 lb_listeners=[
     {
         port=0
